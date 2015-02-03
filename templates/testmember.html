@@ -1,0 +1,45 @@
+{% extends "basetemplate.html" %}
+{% block content %}
+{{ super() }}
+    <div class="container insindex">
+        <row>
+            <div class="col-md-8 col-md-offset-2">
+
+            </div>
+        </row>
+
+    </div>
+    <div class="container membercontent">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3 memberinfo">
+                <img src="{{ url_for('.static',filename='images/'+instrument+'.svg') }}">
+                    <h1> {{ member_name }} <span class="hasseen">has seen</span> {{ num_victories }} Victories</h1>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1 membertable">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th class="date">Date<span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span></th>
+                            <th class="sport">Sport</th>
+                            <th class="opponent">Opponent</th>
+                            <th class="score">Score</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for game in gamelist %}
+                            <tr{% if game.result == "W" %} class="success" {% elif game.result == "L" %} class=danger {% endif %}>
+                                <td class="date">{{ game.gamedate }}</td>
+                                <td class="sport">{{ game.sport }}</td>
+                                <td class="opponent">{{ game.opponent }}</td>
+                                <td class="score">{{ game.score }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

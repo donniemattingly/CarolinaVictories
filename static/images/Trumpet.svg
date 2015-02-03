@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 18.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 1200 400" enable-background="new 0 0 1200 400" xml:space="preserve">
+<polygon fill="#FFFFFF" stroke="#00597F" stroke-width="7" stroke-miterlimit="10" points="38.7,230.6 3.4,169.4 38.7,108.3 
+	109.3,108.3 144.6,169.4 109.3,230.6 "/>
+<polygon fill="#FFFFFF" stroke="#00597F" stroke-width="7" stroke-miterlimit="10" points="144,290.9 108.6,229.8 144,168.6 
+	214.6,168.6 249.9,229.8 214.6,290.9 "/>
+<polygon fill="#FFFFFF" stroke="#00597F" stroke-width="7" stroke-miterlimit="10" points="249.4,230.6 214.1,169.4 249.4,108.3 
+	320,108.3 355.3,169.4 320,230.6 "/>
+<polygon fill="#FFFFFF" stroke="#00597F" stroke-width="7" stroke-miterlimit="10" points="353.3,291.7 318,230.6 353.3,169.4 
+	423.9,169.4 459.2,230.6 423.9,291.7 "/>
+<polygon fill="#00597F" stroke="#00597F" stroke-width="7" stroke-miterlimit="10" points="459.2,230.6 423.9,169.4 459.2,108.3 
+	529.8,108.3 565.1,169.4 529.8,230.6 "/>
+<polygon fill="#FFFFFF" stroke="#00597F" stroke-width="7" stroke-miterlimit="10" points="564.4,291.7 529.1,230.6 564.4,169.4 
+	635,169.4 670.3,230.6 635,291.7 "/>
+<polygon fill="#FFFFFF" stroke="#00597F" stroke-width="7" stroke-miterlimit="10" points="669.9,231.5 634.6,170.3 669.9,109.1 
+	740.6,109.1 775.9,170.3 740.6,231.5 "/>
+<polygon fill="#FFFFFF" stroke="#00597F" stroke-width="7" stroke-miterlimit="10" points="773.8,292.6 738.5,231.5 773.8,170.3 
+	844.5,170.3 879.8,231.5 844.5,292.6 "/>
+<polygon fill="#FFFFFF" stroke="#00597F" stroke-width="7" stroke-miterlimit="10" points="881.3,109.1 846,170.3 881.3,231.5 
+	951.9,231.5 987.2,170.3 951.9,109.1 "/>
+<polygon fill="#FFFFFF" stroke="#00597F" stroke-width="7" stroke-miterlimit="10" points="986.8,169.4 951.5,230.6 986.8,291.7 
+	1057.5,291.7 1092.8,230.6 1057.5,169.4 "/>
+<polygon fill="#FFFFFF" stroke="#00597F" stroke-width="7" stroke-miterlimit="10" points="1090.7,108.3 1055.4,169.4 1090.7,230.6 
+	1161.3,230.6 1196.6,169.4 1161.3,108.3 "/>
+<rect x="39.8" y="145.9" fill="none" width="59.3" height="49.4"/>
+<text transform="matrix(1 0 0 1 41.7833 191.6739)" fill="#4F7FC1" font-family="'MuseoSans-700'" font-size="67.2363">Pi</text>
+<rect x="137" y="209.2" fill="none" width="79.4" height="47.9"/>
+<text transform="matrix(1 0 0 1 143.105 252.9004)" fill="#4F7FC1" font-family="'MuseoSans-700'" font-size="67.2363">Cl</text>
+<rect x="244.2" y="144.9" fill="none" width="81.9" height="73.3"/>
+<text transform="matrix(1 0 0 1 248.6006 192.6441)" fill="#4F7FC1" font-family="'MuseoSans-700'" font-size="67.2363">As</text>
+<rect x="354.5" y="208.5" fill="none" width="68.2" height="49.2"/>
+<g>
+	<text transform="matrix(1 0 0 1 356.3614 255.7754)" fill="#4F7FC1" font-family="'MuseoSans-700'" font-size="67.2363">Ts</text>
+</g>
+<rect x="452.9" y="144.8" fill="none" width="83.2" height="49.3"/>
+<text transform="matrix(1 0 0 1 461.0468 192.5552)" fill="#FFFFFF" font-family="'MuseoSans-700'" font-size="67.2363">Tr</text>
+<rect x="660.8" y="145.8" fill="none" width="88.9" height="48.9"/>
+<text transform="matrix(1 0 0 1 664.4503 193.5562)" fill="#4F7FC1" font-family="'MuseoSans-700'" font-size="67.2363">Tb</text>
+<rect x="550.8" y="210.9" fill="none" width="98.3" height="52.9"/>
+<text transform="matrix(1 0 0 1 551.8663 253.6162)" fill="#4F7FC1" font-family="'MuseoSans-700'" font-size="67.2363">Me</text>
+<rect x="755.6" y="210" fill="none" width="107.2" height="48.2"/>
+<text transform="matrix(1 0 0 1 769.6445 255.7754)" fill="#4F7FC1" font-family="'MuseoSans-700'" font-size="67.2363">Ba</text>
+<rect x="872.5" y="145.7" fill="none" width="88.2" height="48.2"/>
+<text transform="matrix(1 0 0 1 877.8575 193.4844)" fill="#4F7FC1" font-family="'MuseoSans-700'" font-size="67.2363">Tu</text>
+<rect x="975.7" y="209.7" fill="none" width="89.5" height="48.6"/>
+<text transform="matrix(1 0 0 1 981.167 252.7753)" fill="#4F7FC1" font-family="'MuseoSans-700'" font-size="67.2363">Pe</text>
+<rect x="1077.1" y="147" fill="none" width="94.6" height="50.7"/>
+<text transform="matrix(1 0 0 1 1078.3739 194.7452)" fill="#4F7FC1" font-family="'MuseoSans-700'" font-size="67.2363">Gu</text>
+</svg>

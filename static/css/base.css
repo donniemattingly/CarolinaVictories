@@ -1,0 +1,88 @@
+body{
+  background: url(../images/background.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.navbar-brand img{
+    height:220%;
+    position:relative;
+    top:-60%;
+}
+.maincontent{
+    border:solid;
+    border-radius:10px;
+    background-color: rgba(255,255,255,.95);
+    padding: 10px;
+    border-color: white;
+}
+.page404{
+    text-align:center;
+    padding-top:80px;
+}
+#logo {
+    position:absolute;
+    left:0;
+    right:0;
+    top: 20%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+#leaderboard-main{
+    position:absolute;
+    left:0;
+    right:0;
+    height:80%;
+    overflow: scroll;
+    margin-right: auto;
+    margin-left: auto;
+    width: 80%;
+    top:10%;
+}
+.leaderboard-title{
+    color: #263A4C;
+    font-weight:bold;
+}
+.memberinfo{
+
+}
+.insindex{
+    position:relative;
+    padding:20px;
+}
+.membercontent{
+    background-color:white;
+    padding:20px;
+    text-align:center;
+}
+.membertable{
+    position:relative;
+    height:100%;
+    overflow:scroll;
+}
+.hasseen{
+    font-size: 70%;
+}
+/*.glyphicon-triangle-bottom,.glyphicon-triangle-top{*/
+th > span{
+    color:black;
+    font-size:8pt;
+    text-align:right;
+}
+th{
+    color:black;
+    text-align: center;
+    font-weight: bold;
+}
+table{
+    text-align:center;
+}
+body{
+    font-family: museo-sans,sans-serif;
+}
+
+h3{
+    text-align: center;
+}

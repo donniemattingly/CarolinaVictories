@@ -1,0 +1,24 @@
+{% extends "basetemplate.html" %}
+{% block body %}
+{{ super() }}
+<div class='container maincontent' id="leaderboard-main">
+    <div id="leaderboard-sub">
+        <h3 class="leaderboard-title">Leaderboard</h3>
+        <table class="table table-hover" id="leaderboard-table">
+            <tbody>
+                {% for game in gamelist %}
+                    {% if game.location == 'vs' %}
+                    <tr>
+                        <td class="name">{{ game.gamedate }}</td>
+                        <td class="instrument">{{ game.opponent }}</td>
+                        <td class="year">{{ game.result }}</td>
+                        <td class="victories">{{ game.sport }}</td>
+                    </tr>
+                    {% endif %}
+                {% endfor %}
+            </tbody>
+
+        </table>
+    </div>
+</div>
+{% endblock %}
