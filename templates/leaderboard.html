@@ -15,14 +15,12 @@
             </thead>
             <tbody>
                 {% for member in memberslist %}
-                    {% if 'Donnie Mattingly' in member.name %}
                     <tr>
-                        <td class="name">{{ member.name }}</td>
+                        <td class="name"><a href="{{ url_for('member',username=member.name[:-1].replace(' ','_'))}}">{{ member.name }}</a></td>
                         <td class="instrument">{{ member.instrument }}</td>
                         <td class="year">{{ member.year }}</td>
-                        <td class="victories">Victories {{ row }}</td>
+                        <td class="victories"> {{ member.victorycount }}</td>
                     </tr>
-                    {% endif %}
                 {% endfor %}
             </tbody>
 

@@ -1,6 +1,6 @@
 __author__ = 'dmatt'
 import os
-from flask import Flask,request, render_template,abort,redirect,url_for
+from flask import Flask,session, render_template,abort,redirect,url_for
 from flask.ext.bootstrap import Bootstrap
 from flask.ext.script import Manager
 from flask.ext.wtf import Form
@@ -21,7 +21,7 @@ mimetypes.add_type('image/svg+xml', '.svg')
 app.debug = True
 
 
-listofmembers = map(lambda x:x.name,Members.query.all())
+listofmembers = sorted(map(lambda x:x.name,Members.query.all()))
 
 
 
@@ -38,21 +38,19 @@ def index():
     name = None
     form = NameForm()
     if form.validate_on_submit():
-        name = form.name.data
-        return redirect(url_for('member',username=name.replace(' ','_')))
+        session['search'] = form.name.data
+        return redirect(url_for('results'))
     return render_template('index.html',form=form,name=name)
 
 @app.route('/leaderboard')
 def leaderboard():
-    return render_template('leaderboard.html',memberslist=listofmembers)
+    memberslist = Members.query.all()
+    memberslist = sorted(memberslist,key=lambda x:x.victorycount,reverse=True)
+    return render_template('leaderboard.html',memberslist=memberslist)
 
 @app.route('/about')
 def about():
     return render_template('about.html')
-
-@app.route('/gamelist')
-def gamelist():
-    return render_template('gamelist.html',gamelist=listofgames)
 
 @app.errorhandler(404)
 def page_not_found(e):
@@ -76,6 +74,31 @@ def member(username):
     wins = filter(lambda x:x.result == 'W',member_gigs)
     victories = len(wins)
     return render_template('member.html',instrument=member.instrument,gamelist=member_gigs,member_name=member.name,num_victories=victories)
+
+@app.route('/results')
+def results():
+    search = session.pop('search',None)
+    if search:
+        search_results=filter(lambda x:search.lower() in x.lower(),listofmembers)
+        return render_template('results.html',searchresults=search_results)
+    else:
+        return redirect(url_for('index'))
+
+
+def update_leaderboard():
+    members = Members.query.all()
+    for member in members:
+        victoryCount = 0
+        gameCount = 0
+        for ensemble in member.ens:
+            for gig in ensemble.gigs:
+                game_instance = Games.query.filter_by(gamedate=gig.date,sport=gig.sport).first()
+                gameCount = gameCount + 1;
+                if game_instance and game_instance.result == "W":
+                    victoryCount = victoryCount + 1
+        member.victorycount = victoryCount
+        member.gamecount = gameCount
+    db.session.commit()
 
 
 

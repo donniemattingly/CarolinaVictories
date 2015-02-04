@@ -21,6 +21,8 @@ class Members(db.Model):
     name = db.Column(db.String(250),nullable=False)
     instrument = db.Column(db.String(250))
     year = db.Column(db.Integer)
+    victorycount = db.Column(db.Integer)
+    gamecount = db.Column(db.Integer)
     ensemble_id = db.Column(db.Integer,db.ForeignKey('ensembles.id'))
     ens = db.relationship("Ensembles",secondary=lambda: membersensemble_table)
 

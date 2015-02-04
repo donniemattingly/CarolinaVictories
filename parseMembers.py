@@ -1,7 +1,8 @@
 __author__ = 'dmatt'
 
  # -*- coding: latin-1 -*-
-from databases import Members,Ensembles,Gig,db
+from databases import Members,Ensembles,Gig
+from main import db
 import re
 from datetime import datetime
 
@@ -57,6 +58,7 @@ class Member:
         self.name = name[:-1]
         self.instrument = instrument
         self.victories = 0
+        self.gradyear = 0
         # self.years.append(year)
         self.ensembles.append(ensemble)
 
@@ -69,6 +71,19 @@ class Member:
     def addEnsemble(self,ensemble):
         if ensemble not in self.ensembles:
             self.ensembles.append(ensemble)
+    def determineYear(self):
+        self.years = map(lambda x:x.name[0:4],self.ensembles)
+        self.maxyear = max(self.years)
+        self.maxcount= len(filter(lambda x:x==self.maxyear,self.years))
+        self.minyear = min(self.years)
+        self.deltayear =int(self.maxyear)-int(self.minyear)
+        if self.maxcount == 2:
+            self.gradyear = int(self.maxyear)
+        else:
+            self.gradyear = 3-self.deltayear+int(self.maxyear)
+        # print self.name+ "with maxcount: "+str(self.maxcount)+" and deltayear: "+str(self.deltayear)+" and last year in: "+self.maxyear
+        # print "My Guess for "+self.name+"'s graduation year is: "+str(self.gradyear)
+
 
     def printOut(self):
         head = "Student "+self.name+", a member of the "+self.instrument+" section, was in the "
@@ -118,10 +133,10 @@ def detectInstrument(str):
 
 
 
-f12 = open("BW11-12.txt")
-f13 = open("BW12-13.txt")
-f14 = open("BW13-14.txt")
-f15 = open("BW14-15.txt")
+f12 = open("static/resources/BW11-12.txt")
+f13 = open("static/resources/BW12-13.txt")
+f14 = open("static/resources/BW13-14.txt")
+f15 = open("static/resources/BW14-15.txt")
 
 def parseLists():
     yearDict = {f12:2012,f14:2014,f15:2015,f13:2013}
@@ -191,13 +206,15 @@ db.session.commit()
 
 
 for student in band:
-    db.session.add(Members(name = student.name,instrument = student.instrument))
+    student.determineYear()
+    db.session.add(Members(name = student.name,instrument = student.instrument,year=student.gradyear))
+    db.session.commit()
     for i in student.ensembles:
-        print student.name+' was in the '+i.name
+        # print student.name+' was in the '+i.name
         m = db.session.query(Members).filter(Members.name == student.name).first()
-        print m
+        # print m
         q = db.session.query(Ensembles).filter(Ensembles.ensemblename == i.name).first()
-        print q
+        # print q
         # print q.ensemblename
         m.ens.append(q)
 

@@ -3,7 +3,8 @@ __author__ = 'dmatt'
 from bs4 import BeautifulSoup
 import datetime
 import urllib2
-from databases import db,Games
+from databases import Games
+from main import db
 
 
 
