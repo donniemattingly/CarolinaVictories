@@ -18,7 +18,7 @@ app.config.from_envvar('CV_SETTINGS')
 db.app = app
 db.init_app(app)
 mimetypes.add_type('image/svg+xml', '.svg')
-app.debug = True
+app.debug = False
 
 
 listofmembers = sorted(map(lambda x:x.name,Members.query.all()))
