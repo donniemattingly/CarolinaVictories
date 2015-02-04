@@ -1,11 +1,9 @@
 __author__ = 'dmatt'
-from flask import Flask
 from flask.ext.sqlalchemy import SQLAlchemy
 
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///carolinavictories.db'
-db = SQLAlchemy(app)
+db = SQLAlchemy()
 
+########Database stuff#######
 class Games(db.Model):
     __tablename__ = 'games'
     id = db.Column(db.Integer,primary_key=True)
@@ -18,7 +16,7 @@ class Games(db.Model):
 
 class Members(db.Model):
     __tablename__ = 'members'
-    __searchable__= ['name','instrument']
+    __searchable__= ['name']
     id = db.Column(db.Integer,primary_key=True)
     name = db.Column(db.String(250),nullable=False)
     instrument = db.Column(db.String(250))

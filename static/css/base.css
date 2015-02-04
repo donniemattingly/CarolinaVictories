@@ -6,15 +6,16 @@ body{
   background-size: cover;
 }
 .navbar-brand img{
-    height:220%;
+    height:50px;
+    top:-15px;
     position:relative;
-    top:-60%;
 }
 .maincontent{
     border:solid;
     border-radius:10px;
     background-color: rgba(255,255,255,.95);
     padding: 10px;
+    top:80px;
     border-color: white;
 }
 .page404{
@@ -46,7 +47,7 @@ body{
     font-weight:bold;
 }
 .memberinfo{
-
+    font-size:2em;
 }
 .insindex{
     position:relative;
@@ -64,6 +65,9 @@ body{
 }
 .hasseen{
     font-size: 70%;
+}
+.abouttitle{
+    text-align:center;
 }
 /*.glyphicon-triangle-bottom,.glyphicon-triangle-top{*/
 th > span{

@@ -1,0 +1,43 @@
+{% extends "basetemplate.html" %}
+{% block content %}
+{{ super() }}
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1 maincontent">
+            <h1 class="abouttitle">
+                About Carolina Victories
+            </h1>
+                <h3>
+                    What it is
+                </h3>
+                    <p>
+                        Carolina Victories is a site that attempts to track the games individual members of the Marching Tar Heels
+                        have attended and the result of those games. I was always curious how many times I had played Victory and Hark the Sound
+                        after I watched one of the many athletic teams we play for win a game. Knowing this begs other questions. Who in the band
+                        has seen the most? Who has seen the least? Who seems to bring the most luck to a game? Who seems to bring the least? Carolina
+                        Victories tries to answer these questions.
+                    </p>
+                <h3>
+                    What it is not
+                </h3>
+                    <p>
+                        This site is neither exhaustive nor authoritative in its information. The data comes from GoHeels.com and Blue/White band lists
+                        distributed by Mr. Fuchs that I found in my email inbox from the past 4 years. Having only those sources to draw from there are many
+                        errors that can occur in such an analysis. If you swapped into/out of a gig, missed a gig, switched bands, or have a spelling error in
+                        your name on one of the lists the information represented on this site is likely to be incorrect
+                    </p>
+                <h3>
+                    How it works
+                </h3>
+                    <p>
+                        This site is built using <a href="http://flask.pocoo.org/">Flask</a>, a python microframework for the web. The code can be found on
+                        <a href="https://github.com/donniemattingly/CarolinaVictories">github</a>. I used a piece of software that strips text from pdf files
+                        to more easily parse the Blue/White band lists. The data from those lists is used to assign individuals to ensembles and dates to individual
+                        ensembles. These dates are checked against data from GoHeels.com and that allows me to determine the result of each game. All the design was
+                        done by me (that's why it's so bad) using Illustrator and Bootstrap. You can contact me at donniewmattingly[at]gmail.com if you are having
+                        issues with the site.
+                    </p>
+        </div>
+    </div>
+</div>
+{% endblock %}

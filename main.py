@@ -4,69 +4,25 @@ from flask import Flask,request, render_template,abort,redirect,url_for
 from flask.ext.bootstrap import Bootstrap
 from flask.ext.script import Manager
 from flask.ext.wtf import Form
-from flask.ext.sqlalchemy import SQLAlchemy
 from wtforms import StringField,SubmitField
 from wtforms.validators import Required
-import flask.ext.whooshalchemy as whooshalchemy
 import mimetypes
+from databases import Games,Members,db
 
 
 
 app = Flask(__name__)
 manager = Manager(app)
 bootstrap = Bootstrap(app)
-app.config['SECRET_KEY'] = 'thisneedstobechanged'
-app.config['BOOTSTRAP_SERVE_LOCAL'] = True
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///carolinavictories.db'
-db = SQLAlchemy(app)
+app.config.from_envvar('CV_SETTINGS')
+db.app = app
+db.init_app(app)
 mimetypes.add_type('image/svg+xml', '.svg')
 app.debug = True
 
-########Database stuff#######
-class Games(db.Model):
-    __tablename__ = 'games'
-    id = db.Column(db.Integer,primary_key=True)
-    gamedate = db.Column(db.Date,nullable=False)
-    opponent = db.Column(db.String(250), nullable=False)
-    location = db.Column(db.String(10), nullable=False)
-    result = db.Column(db.String(10))
-    score = db.Column(db.String(250))
-    sport = db.Column(db.String(250))
 
-class Members(db.Model):
-    __tablename__ = 'members'
-    __searchable__= ['name']
-    id = db.Column(db.Integer,primary_key=True)
-    name = db.Column(db.String(250),nullable=False)
-    instrument = db.Column(db.String(250))
-    year = db.Column(db.Integer)
-    ensemble_id = db.Column(db.Integer,db.ForeignKey('ensembles.id'))
-    ens = db.relationship("Ensembles",secondary=lambda: membersensemble_table)
+listofmembers = map(lambda x:x.name,Members.query.all())
 
-class Ensembles(db.Model):
-    __tablename__ = 'ensembles'
-    id = db.Column(db.Integer,primary_key=True)
-    ensemblename = db.Column(db.String(250),nullable=False)
-    gigs = db.relationship("Gig",backref=db.backref('ensemble'))
-
-class Gig(db.Model):
-    __tablename__= 'gig'
-    id = db.Column(db.Integer,primary_key=True)
-    date = db.Column(db.Date,nullable=False)
-    sport = db.Column(db.String(250))
-    ensemble_id = db.Column(db.Integer,db.ForeignKey('ensembles.id'))
-
-membersensemble_table = db.Table('membersensembles',
-                              db.Column('members_id',db.Integer,db.ForeignKey("members.id"),primary_key=True),
-                              db.Column('ensemble_id',db.Integer,db.ForeignKey("ensembles.id"),primary_key=True)
-
-)
-
-listofmembers = Members.query.all()
-listofmembers = map(lambda x:x.name,listofmembers)
-listofgames = Games.query.all()
-
-whooshalchemy.whoosh_index(app, Members)
 
 
 def printGameAttributes(gamelist):
@@ -90,9 +46,9 @@ def index():
 def leaderboard():
     return render_template('leaderboard.html',memberslist=listofmembers)
 
-@app.route('/testmember')
+@app.route('/about')
 def about():
-    abort(404)
+    return render_template('about.html')
 
 @app.route('/gamelist')
 def gamelist():
@@ -119,7 +75,7 @@ def member(username):
     member_gigs = sorted(member_gigs,key=lambda game:game.gamedate)
     wins = filter(lambda x:x.result == 'W',member_gigs)
     victories = len(wins)
-    return render_template('testmember.html',instrument=member.instrument,gamelist=member_gigs,member_name=member.name,num_victories=victories)
+    return render_template('member.html',instrument=member.instrument,gamelist=member_gigs,member_name=member.name,num_victories=victories)
 
 
 

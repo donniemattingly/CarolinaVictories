@@ -1,7 +1,7 @@
 __author__ = 'dmatt'
 
  # -*- coding: latin-1 -*-
-from main import Members,Ensembles,Gig,db
+from databases import Members,Ensembles,Gig,db
 import re
 from datetime import datetime
 
