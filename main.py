@@ -75,12 +75,17 @@ def member(username):
     victories = len(wins)
     return render_template('member.html',instrument=member.instrument,gamelist=member_gigs,member_name=member.name,num_victories=victories)
 
-@app.route('/results')
+@app.route('/results',methods=['GET','POST'])
 def results():
+    name = None
+    form = NameForm()
+    if form.validate_on_submit():
+        session['search'] = form.name.data
+        return redirect(url_for('results'))
     search = session.pop('search',None)
     if search:
         search_results=filter(lambda x:search.lower() in x.lower(),listofmembers)
-        return render_template('results.html',searchresults=search_results)
+        return render_template('results.html',searchresults=search_results,form=form,name=name)
     else:
         return redirect(url_for('index'))
 

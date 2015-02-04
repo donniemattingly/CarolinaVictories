@@ -9,20 +9,18 @@
             Ever wonder how many times you've played victory?
         </h3>
     </div>
-{#    <div class="input-group">#}
-{#      <input type="text" class="form-control" placeholder="Search by Name, Instrument, or Year" aria-describedby="basic-addon1">#}
-{#      <span class="input-group-btn" id="basic-addon1">#}
-{#          <button class="btn btn-default" type="button">#}
-{#              Find out#}
-{#          </button>#}
-{#      </span>#}
-{#    </div>#}
+    <form method="post" action="">
+        <div class="input-group">
+          {{ form.hidden_tag() }}
+          {{ form.name(class_="form-control",placeholder="Enter whole or part of a name") }}
+          <span class="input-group-btn" id="basic-addon1">
+              <button class="btn btn-default" type="button">
+                  Find out
+              </button>
+          </span>
+        </div>
+    </form>
 
-    <form method="POST" action="/">
-    {{ form.hidden_tag() }}
-    {{ form.name(class_="form-control",placeholder="Search by full name") }}
-    <input style="align-self:center" type="submit" value="Find Out">
-</form>
 </div>
 
 {% endblock %}
