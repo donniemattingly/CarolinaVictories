@@ -4,6 +4,7 @@ _Store
 venv
 venv*
 dist
+.DS_Store
 *.egg
 *.egg-info
 _mailinglist
