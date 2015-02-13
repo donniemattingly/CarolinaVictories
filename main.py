@@ -21,7 +21,7 @@ mimetypes.add_type('image/svg+xml', '.svg')
 app.debug = True
 
 
-listofmembers = sorted(map(lambda x:x.name,Members.query.all()))
+
 
 
 
@@ -31,7 +31,7 @@ def printGameAttributes(gamelist):
             print 'game on date '+str(game.gamedate)+'vs'+game.opponent+' was a '+game.result+' with a score of '+game.score
 class NameForm(Form):
     name = StringField(validators=[Required()])
-    submit = SubmitField('Submit')
+    submit = SubmitField('Find Out')
 
 @app.route('/', methods=['GET','POST'])
 def index():
@@ -65,7 +65,7 @@ def member(username):
     member_gigs = []
     for i in member.ens:
         for j in i.gigs:
-            game_instance = Games.query.filter_by(gamedate=j.date,sport='mens-basketball').first()
+            game_instance = Games.query.filter_by(gamedate=j.date,sport=j.sport).first()
             if game_instance != None:
                 member_gigs.append(game_instance)
             else:
@@ -77,6 +77,7 @@ def member(username):
 
 @app.route('/results',methods=['GET','POST'])
 def results():
+    listofmembers = sorted(map(lambda x:x.name,Members.query.all()))
     name = None
     form = NameForm()
     if form.validate_on_submit():

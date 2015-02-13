@@ -34,7 +34,7 @@
                     </thead>
                     <tbody>
                         {% for game in gamelist %}
-                            <tr{% if game.result == "W" %} class="success" {% elif game.result == "L" %} class=danger {% endif %}>
+                            <tr{% if game.result == "W" %} class="success" {% elif game.result == "L" %} class=danger {% else %} class=warning{% endif %}>
                                 <td class="date">{{ game.gamedate }}</td>
                                 <td class="sport">{{ game.sport }}</td>
                                 <td class="opponent">{{ game.opponent }}</td>

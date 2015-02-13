@@ -14,9 +14,7 @@
           {{ form.hidden_tag() }}
           {{ form.name(class_="form-control",placeholder="Enter whole or part of a name") }}
           <span class="input-group-btn" id="basic-addon1">
-              <button class="btn btn-default" type="button">
-                  Find out
-              </button>
+                  {{ form.submit(class_="btn btn-default") }}
           </span>
         </div>
     </form>

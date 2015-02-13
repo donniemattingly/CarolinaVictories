@@ -3,6 +3,7 @@ _Store
 *.pyo
 venv
 venv*
+.cfg
 dist
 .DS_Store
 *.egg
