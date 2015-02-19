@@ -25,6 +25,7 @@ $(function(){
         console.log('width passes')
         $("td.sport").text(function(index,text){
             return sports[text];
-        })
+        });
+        $("thead .opponent").text('Team')
     }
 });
