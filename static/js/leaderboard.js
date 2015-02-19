@@ -6,6 +6,8 @@ var sort_ascending = true;
 var desc_span = "<span class=\"glyphicon glyphicon-sort-by-attributes\" aria-hidden=\"true\"></span>";
 var asc_span = "<span class=\"glyphicon glyphicon-sort-by-attributes-alt\" aria-hidden=\"true\"></span>";
 
+
+
 function clearTable(){
     $("#leaderboard-table").find('tbody').html('');
 }
