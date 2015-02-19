@@ -55,7 +55,7 @@ class Member:
 
     def __init__(self,name,instrument,ensemble):
         self.ensembles = []
-        self.name = name[:-1]
+        self.name = name
         self.instrument = instrument
         self.victories = 0
         self.gradyear = 0
@@ -174,7 +174,7 @@ def parseLists():
             elif (dval != -1):
                 instrument = instrumentNameList[dval]
             elif re.match("[A-Za-z ,.'-]+ [A-Za-z ,.'-]+ $",line,re.UNICODE):
-                name = line
+                name = line.strip()
                 if not band.contains(name):
                     band.add(Member(name,instrument,ensembleDict[list][file]))
                 else:

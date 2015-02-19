@@ -48,16 +48,20 @@ for semester in semesters:
                 instrument = instrumentNameList[dval]
             elif re.match("[A-Za-z ,.'-]+ [A-Za-z ,.'-]+$",line,re.UNICODE):
                 line = re.findall("[A-Za-z ,.'-]+ [A-Za-z ,.'-]+$",line,re.UNICODE)[0]
-                print line
-                member = Members.query.filter_by(name=line+' ').first()
+                member = Members.query.filter_by(name=line).first()
                 q = db.session.query(Ensembles).filter(Ensembles.ensemblename == pepband+semester).first()
                 if member:
+                    if member.year == 20:
+                        if 'S' in semester: year = int('20'+semester[1:])+3
+                        else: year = int('20'+semester[1:0])
+                        member.year = year
                     member.ens.append(q)
+                    print len(member.ens)
                     db.session.commit()
                 else:
                     if 'S' in semester: year = int('20'+semester[1:])+3
-                    else: year = int('20'+semester[1:0])
-                    new_member = Members(name=line+' ',instrument=instrument,year=year)
+                    else: year = int('20'+semester[1:])+4
+                    new_member = Members(name=line,instrument=instrument,year=year)
                     db.session.add(new_member)
                     new_member.ens.append(q)
                     db.session.commit()

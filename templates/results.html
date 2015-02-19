@@ -24,7 +24,7 @@
                 <tbody>
                     {% for result in searchresults %}
                         <tr>
-                            <td><a href="{{ url_for('member',username=result[:-1].replace(' ','_'))}}">{{ result }}</a></td>
+                            <td><a href="{{ url_for('member',username=result.replace(' ','_'))}}">{{ result }}</a></td>
                         </tr>
                     {% endfor %}
                 </tbody>

@@ -1,6 +1,10 @@
 {% extends "bootstrap/base.html" %}
 {% block head %}
 {{ super() }}
+    <script type="text/javascript">
+        var $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+    </script>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="//use.typekit.net/bpn5gmk.js"></script>
     <script>try{Typekit.load();}catch(e){}</script>
 {% endblock %}

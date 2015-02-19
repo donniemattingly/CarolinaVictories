@@ -1,9 +1,41 @@
 __author__ = 'dmatt'
 from flask.ext.sqlalchemy import SQLAlchemy
-
+from flask.ext.login import UserMixin
+from werkzeug.security import generate_password_hash,check_password_hash
 db = SQLAlchemy()
 
 ########Database stuff#######
+class User(UserMixin,db.Model):
+    __tablename__ = 'users'
+    id = db.Column(db.Integer,primary_key=True)
+    username = db.Column(db.String(100),nullable=False)
+    password_hash = db.Column(db.String(128))
+    @property
+    def password(self):
+        raise AttributeError('password is not a readable attribute')
+    @password.setter
+    def password(self,password):
+        self.password_hash = generate_password_hash(password)
+
+    def verify_password(self,password):
+        return check_password_hash(self.password_hash,password)
+
+    def is_authenticated(self):
+        return True
+
+    def is_active(self):
+        return True
+
+    def is_anonymous(self):
+        return False
+
+    def get_id(self):
+        return self.id
+
+    # Required for administrative interface
+    def __unicode__(self):
+        return self.username
+
 class Games(db.Model):
     __tablename__ = 'games'
     id = db.Column(db.Integer,primary_key=True)
@@ -13,6 +45,7 @@ class Games(db.Model):
     result = db.Column(db.String(10))
     score = db.Column(db.String(250))
     sport = db.Column(db.String(250))
+    url = db.Column(db.String(500))
 
 class Members(db.Model):
     __tablename__ = 'members'

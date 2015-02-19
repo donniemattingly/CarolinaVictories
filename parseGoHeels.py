@@ -19,13 +19,14 @@ class Game:
         score - string of score, with winning score always coming first
             This is why we have to store the result and the score separately
     '''
-    def __init__(self,date,opponent,location,result,score,sport):
+    def __init__(self,date,opponent,location,result,score,sport,url):
         self.date = date
         self.opponent = opponent
         self.location = location
         self.result = result
         self.score = score
         self.sport = sport
+        self.url = url
 
 
     def printOut(self):
@@ -81,12 +82,18 @@ def get_sport(sport,years):
             if '-' in date:
                 date = date[14:]
             dt = datetime.datetime.strptime(date,"%a, %b %d%Y")
-            if dt.month >= 9:
+            if dt.month >= 8:
                 dt = datetime.datetime(year,dt.month,dt.day)
-            # else:
-            #     dt = datetime.datetime(year+1,dt.month,dt.day)
+            else:
+                dt = datetime.datetime(year+1,dt.month,dt.day)
             opponent = row.find(class_='opponent').text.strip('\n\t')
-            results = row.find(class_='results').text.strip('\n\t')
+            results = row.find(class_='results')
+            url = ''
+            if results.a != None:
+                url = results.a['href']
+                if url[0] == '/':
+                    url='http://www.goheels.com'+url
+            results = results.text.strip('\n\t')
             results = results.replace("2OT","dOT")
             results = results.replace("(T)","(D)")
             score = results.rstrip('DLWdOT()Penaltysroks ')
@@ -98,7 +105,7 @@ def get_sport(sport,years):
                     result = "L"
             else:
                 result = results.strip('d0123456789 -()OT')
-            season.append(Game(dt,opponent,loc,result,score,sport))
+            season.append(Game(dt,opponent,loc,result,score,sport,url))
         seasons.append(season)
     return seasons
 
@@ -117,7 +124,9 @@ for key,value in urlDict.iteritems():
                              location=game.location,
                              result=game.result,
                              score=game.score,
-                             sport=game.sport)
+                             sport=game.sport,
+                             url=game.url)
             db.session.add(new_game)
+            continue
 
 db.session.commit()

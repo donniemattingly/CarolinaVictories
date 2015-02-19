@@ -1,0 +1,12 @@
+Away,Home,AwayPred,HomePred,AwayPwin,HomePwin,AwayMargin,HomeMargin
+Dallas,Golden State,105,113,24.42,75.58,9.5,-8.5
+Detroit,Indiana,95,96,48.99,51.01,3,-0.5
+LA Lakers,Milwaukee,94,103,20.3,79.7,---,-9.5
+Memphis,Utah,98,92,68.12,31.88,-6.5,6.5
+Miami,Minnesota,98,92,68.06,31.94,-6.5,-2.5
+Brooklyn,Toronto,97,106,21.99,78.01,7.5,-8.5
+Oklahoma City,New Orleans,96,101,37.36,62.64,---,-4.5
+Orlando,San Antonio,93,104,16.26,83.74,12.5,-10.5
+Washington,Atlanta,96,104,24.56,75.44,5.5,-7.5
+Denver,Boston,102,105,42.79,57.21,2.5,-2.5
+Chicago,Houston,99,104,36.76,63.24,2.5,-4.5

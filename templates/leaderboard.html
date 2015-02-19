@@ -1,22 +1,25 @@
 {% extends "basetemplate.html" %}
+
 {% block body %}
 {{ super() }}
 <div class='container maincontent' id="leaderboard-main">
     <div id="leaderboard-sub">
-        <h3 class="leaderboard-title">Leaderboard</h3>
+        <div id="title">
+            <h3 class="leaderboard-title">Leaderboard</h3>
+        </div>
         <table class="table table-hover" id="leaderboard-table">
             <thead>
                 <tr>
-                    <th class="name">Name <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span> </th>
-                    <th class="instrument">Instrument</th>
-                    <th class="year">Year<span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span></th>
-                    <th class="victories">Victories<span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span></th>
+                    <th class="name" id="headName" onclick="sortByName()">Name</th>
+                    <th class="instrument" id="headInstrument" onclick="sortByInstrument()">Instrument</th>
+                    <th class="year" id="headYear" onclick="sortByYear()">Year<span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span></th>
+                    <th class="victories" id="headVictories" onclick="sortByVictories()">Victories<span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span></th>
                 </tr>
             </thead>
             <tbody>
                 {% for member in memberslist %}
                     <tr>
-                        <td class="name"><a href="{{ url_for('member',username=member.name[:-1].replace(' ','_'))}}">{{ member.name }}</a></td>
+                        <td class="name"><a href="{{ url_for('member',username=member.name.replace(' ','_'))}}">{{ member.name }}</a></td>
                         <td class="instrument">{{ member.instrument }}</td>
                         <td class="year">{{ member.year }}</td>
                         <td class="victories"> {{ member.victorycount }}</td>
@@ -27,4 +30,9 @@
         </table>
     </div>
 </div>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<script src="static/js/leaderboard.js"></script>
 {% endblock %}

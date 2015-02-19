@@ -27,7 +27,11 @@ def getName():
     global basefilename
     # basefilename = "C:\Users\mstock\Dropbox\Public\CSV"
     # basefilename = "/Users/dmatt/Desktop"
+<<<<<<< HEAD
     basefilename  = "/var/www/html/parser"
+=======
+    basefilename  = "/home/www/CarolinaVictories/static/resources/parser"
+>>>>>>> 49fa5e7d50473a1570520ecc3b9a3469bb330847
 def parsePT_NBAold ():
      
     soup = BeautifulSoup(urllib2.urlopen('http://www.thepredictiontracker.com/prednba.html','html5lib').read())
